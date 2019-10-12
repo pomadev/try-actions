@@ -25,6 +25,7 @@ jobs:
     - name: golint
       run: |
         go get -u golang.org/x/lint/golint
+        export PATH=$PATH:$GOPATH/bin
         golint ./...
 
     - name: Build
