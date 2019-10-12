@@ -43,8 +43,14 @@ jobs:
         go-version: 1.13
       id: go
 
+    - name: ls
+      run: ls -l
+
     - name: Check out code into the Go module directory
       uses: actions/checkout@v1
+
+    - name: ls
+      run: ls -l
 
 #    - name: Get dependencies
 #      run: |
