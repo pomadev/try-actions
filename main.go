@@ -7,7 +7,7 @@ import (
 	"github.com/spf13/viper"
 )
 
-// Add adds a and b, and returns the result
+// add adds a and b, and returns the result
 func Add(a, b int) int {
 	return a + b
 }

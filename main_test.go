@@ -21,7 +21,7 @@ func TestAdd(t *testing.T) {
 		{
 			arg1: 1,
 			arg2: 1,
-			want: 0,
+			want: 2,
 		},
 	}
 
