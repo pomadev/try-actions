@@ -23,7 +23,9 @@ jobs:
       run: go test -v -cover ./...
 
     - name: golint
-      run: golint ./...
+      run: |
+        go get -u github.com/golang/lint/golint
+        golint ./...
 
     - name: Build
       if: success()
