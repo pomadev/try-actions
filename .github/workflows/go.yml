@@ -25,6 +25,11 @@ jobs:
         if: failure()
         run: |
           echo "fail"
+      - name: Show Secret
+        env:
+          SECRET_NAME: ${{ secrets.SECRET_NAME }}
+        run: |
+          echo $SECRET_NAME
 
   build:
     name: Build
