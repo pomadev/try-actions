@@ -16,18 +16,11 @@ jobs:
         go-version: 1.13
       id: go
 
-    - name: lint
-      run: go get -u golang.org/x/lint/golint
-
     - name: Check out code into the Go module directory
       uses: actions/checkout@v1
 
     - name: test
-      run: go test -v -cover ./...
-
-    - name: golint
-      run: |
-        golint ./...
+      run: go test -v ./...
 
     - name: Build
       if: success()
