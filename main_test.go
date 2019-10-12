@@ -18,6 +18,11 @@ func TestAdd(t *testing.T) {
 			arg2: -2,
 			want: 0,
 		},
+		{
+			arg1: 1,
+			arg2: 1,
+			want: 0,
+		},
 	}
 
 	for _, tt := range tests {
