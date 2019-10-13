@@ -7,15 +7,8 @@ import (
 	"os"
 )
 
-func Sample() {
-
-}
-
 func main() {
 	http.HandleFunc("/", indexHandler)
-
-	a := 1
-	a = a + 1
 
 	port := os.Getenv("PORT")
 	if port == "" {
