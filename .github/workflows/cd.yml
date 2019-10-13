@@ -1,4 +1,4 @@
-name: Deploy
+name: CD
 on:
   push:
     branches:
@@ -6,7 +6,7 @@ on:
 jobs:
 
   deploy:
-    name: Deploy
+    name: runner / deploy
     runs-on: ubuntu-latest
     steps:
 
@@ -20,5 +20,7 @@ jobs:
 
       - name: GAE Deploy
         uses: actions/gcloud/cli@master
+        env:
+          PROJECT_ID: ${{ secrets.PROJECT_ID }}
         with:
-          args: app deploy --project=${{ secrets.PROJECT_ID }} --quiet
+          args: app deploy --quiet
