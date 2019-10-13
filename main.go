@@ -3,38 +3,27 @@ package main
 import (
 	"fmt"
 	"log"
-
-	"github.com/spf13/viper"
+	"net/http"
+	"os"
 )
 
-// add adds a and b, and returns the result
-func Add(a, b int) int {
-	return a + b
-}
-
-type config struct {
-	Host struct {
-		Address string `mapstructure:"address"`
-		Port    int    `mapstructure:"port"`
-	} `mapstructure:"host"`
-}
-
 func main() {
-	fmt.Println(Add(1, 1))
+	http.HandleFunc("/", indexHandler)
 
-	viper.SetDefault("host.address", "default")
-	viper.SetDefault("host.port", 1234)
-
-	viper.SetConfigFile("config.json")
-	err := viper.ReadInConfig()
-	if err != nil {
-		log.Fatal(err)
+	port := os.Getenv("PORT")
+	if port == "" {
+		port = "8080"
+		log.Printf("Defaulting to port %s", port)
 	}
 
-	var c config
-	err = viper.Unmarshal(&c)
-	if err != nil {
-		log.Fatal(err)
+	log.Printf("Listening on port %s", port)
+	log.Fatal(http.ListenAndServe(fmt.Sprintf(":%s", port), nil))
+}
+
+func indexHandler(w http.ResponseWriter, r *http.Request) {
+	if r.URL.Path != "/" {
+		http.NotFound(w, r)
+		return
 	}
-	fmt.Println(c.Host.Address, c.Host.Port)
+	fmt.Fprint(w, "Hello, World!")
 }
