@@ -10,6 +10,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
 
+      - name: Check out code into the Go module directory
+        uses: actions/checkout@v1
+
       - name: Setup Google Cloud
         uses: actions/gcloud/auth@master
         env:
