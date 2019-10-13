@@ -17,4 +17,5 @@ jobs:
 
       - name: GAE Deploy
         uses: actions/gcloud/cli@master
-        args: app deploy
+        with:
+          args: app deploy
