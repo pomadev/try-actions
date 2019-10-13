@@ -21,6 +21,6 @@ jobs:
       - name: GAE Deploy
         uses: actions/gcloud/cli@master
         env:
-          CLOUDSKD_CORE_PROJECT: ${{ secrets.PROJECT_ID }}
+          CLOUDSDK_CORE_PROJECT: ${{ secrets.PROJECT_ID }}
         with:
           args: app deploy --quiet
