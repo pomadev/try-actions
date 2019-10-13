@@ -18,4 +18,4 @@ jobs:
       - name: GAE Deploy
         uses: actions/gcloud/cli@master
         with:
-          args: app deploy
+          args: app deploy --project=${{ secrets.PROJECT_ID }}
